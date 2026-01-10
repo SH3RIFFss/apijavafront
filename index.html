@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="src/Css/Style.css">
+    <script src="src/Js/Script.js" defer></script>
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h1 class="txtCenter">Teste de persistencia</h1>
+        <nav id="navHeader">
+            <ul id="menu">
+                <span class="btnArea">
+                    <h3>Funcinario</h3>
+                    <button id="funcionarioPersistir" onclick="mostrarTabela('areaFormFuncionario')">
+                        <li><p>Persistir...</p></li>
+                    </button>
+                    <button id="FuncionarioConsumir" onclick="mostrarTabela('tabelaFuncionario')">
+                        <li><p>consumir...</p></li>
+                    </button>
+                </span>
+                <span class="btnArea">
+                    <h3>Produto</h3>
+                    <button id="produtoPersistir" onclick="mostrarTabela('areaFormProduto')">
+                        <li><p>Persistir...</p></li>
+                    </button>
+                    <button id="ProdutoConsumir"  onclick="mostrarTabela('tabelaProduto')">
+                        <li><p>consumir...</p></li>
+                    </button>
+                </span>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <article id="estrutura" class="center">
+            <aside id="areaFormProduto" class="hidden">
+                <h3>Cadastrar produto</h3>
+                <form method="post" id="formularioProduto">
+                    <input type="number" name="idFuncionario" id="idFuncionario" class="blockFormulario" placeholder="IdFuncionario">
+                    <input type="text" name="nome" id="nome" class="blockFormulario" placeholder="Nome">
+                    <input type="number" name="quantidade" id="quantidade" class="blockFormulario" placeholder="Quantidade">
+                    <input type="number" name="valor" id="valor" class="blockFormulario" placeholder="Valor">
+                    <input type="text" name="distribuidor" id="distribuidor" class="blockFormulario" placeholder="Distribuidor">
+                    <input type="date" name="data" id="data" class="blockFormulario" placeholder="Data">
+                    <span class="center btnArea">
+                        <button id="btnFormProduto"><p>Enviar...</p></button>
+                    </span>
+                </form>
+            </aside>
+            <aside id="tabelaProduto" class="hidden">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>idFuncionario</th>
+                            <th>nome</th>
+                            <th>quantidade</th>
+                            <th>valor</th>
+                            <th>distribuidor</th>
+                            <th>data</th>
+                        </tr>
+                    </thead>
+                    <tbody id="dadosProdutos">
+                    </tbody>
+                </table>
+            </aside>
+            <aside id="areaFormFuncionario" class="hidden">
+                <h3>Cadastrar funcionario</h3>
+                <form method="post" id="formularioFuncionario" class="">
+                    <input type="text" name="nome" id="nomeFuncionario" class="blockFormulario" placeholder="Nome">
+                    <input type="text" name="cargo" id="cargoFuncionario" class="blockFormulario" placeholder="Cargo">
+                    <span class="center btnArea">
+                        <button id="btnFormFuncionario"><p>Enviar..</p></button>
+                    </span>
+                </form>
+            </aside>
+            
+            <aside id="tabelaFuncionario" class="hidden">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>nome</th>
+                            <th>cargo</th>
+                        </tr>
+                    </thead>
+                    <tbody id="dadosFuncionarios">
+                    </tbody>
+                </table>
+            </aside>
+            
+        </article>
+    </main>
+    <footer></footer>
+</body>
+</html>
