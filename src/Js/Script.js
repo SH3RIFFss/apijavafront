@@ -1,23 +1,23 @@
-const funcionarios = document.getElementById("dadosFuncionarios");
-const produtos = document.getElementById("dadosProdutos");
 
-function mostrarTabela(id){
+function mostrarTabela(id) {
     const tabela = document.getElementById(id);
     tabela.classList.toggle("hidden");
 }
 
-function consumirFuncionario(id, nome, cargo){
+function consumirFuncionario(id, nome, cargo) {
+    const funcionarios = document.getElementById("dadosFuncionarios");
     const dadoFuncionario = document.createElement("tr");
     dadoFuncionario.innerHTML = `<tr>
-                        <td>${id}</td>
-                        <td>${nome}</td>
-                        <td>${cargo}</td>
-                    </tr>`;
+    <td>${id}</td>
+    <td>${nome}</td>
+    <td>${cargo}</td>
+    </tr>`;
     funcionarios.appendChild(dadoFuncionario);
 }
-function consumirProduto(id, idFuncionario, quantidade,nome,valor, distribuidor, data){
-    const dadoProduto=document.createElement("tr");
-    dadoProduto.innerHTML=`<tr>
+function consumirProduto(id, idFuncionario, quantidade, nome, valor, distribuidor, data) {
+    const produtos = document.getElementById("dadosProdutos");
+    const dadoProduto = document.createElement("tr");
+    dadoProduto.innerHTML = `<tr>
                         <td>${id}</td>
                         <td>${idFuncionario}</td>
                         <td>${nome}</td>
@@ -28,31 +28,31 @@ function consumirProduto(id, idFuncionario, quantidade,nome,valor, distribuidor,
                     </tr>`;
     produtos.appendChild(dadoProduto);
 }
-const persistirFuncionario=document.getElementById('btnFormFuncionario').addEventListener("click",(e)=>{
+const persistirFuncionario = document.getElementById('btnFormFuncionario').addEventListener("click", (e) => {
     e.preventDefault();
-    const nome=document.getElementById("nomeFuncionario");
-    const cargo=document.getElementById("cargoFuncionario");
-    const nomeV=nome.value;
-    const cargoV=cargo.value;
+    const nome = document.getElementById("nomeFuncionario");
+    const cargo = document.getElementById("cargoFuncionario");
+    const nomeV = nome.value;
+    const cargoV = cargo.value;
 
-    consumirFuncionario(0,nomeV,cargoV);
+    consumirFuncionario(0, nomeV, cargoV);
 })
-const persistirProduto=document.getElementById("btnFormProduto").addEventListener("click",(e)=>{
+const persistirProduto = document.getElementById("btnFormProduto").addEventListener("click", (e) => {
     e.preventDefault();
-    const idFuncionario=document.getElementById("idFuncionario");
-    const nome=document.getElementById("nome");
-    const valor=document.getElementById("valor");
-    const distribuidor=document.getElementById("distribuidor");
-    const data=document.getElementById("data");
-    const quantidade=document.getElementById("quantidade");
+    const idFuncionario = document.getElementById("idFuncionario");
+    const nome = document.getElementById("nome");
+    const valor = document.getElementById("valor");
+    const distribuidor = document.getElementById("distribuidor");
+    const data = document.getElementById("data");
+    const quantidade = document.getElementById("quantidade");
 
-    const idFuncionarioV=idFuncionario.value;
-    const nomeV=nome.value;
-    const valorV=valor.value;
-    const distribuidorV=distribuidor.value;
-    const dataV=data.value;
-    const quantidadeV=quantidade.value;
+    const idFuncionarioV = idFuncionario.value;
+    const nomeV = nome.value;
+    const valorV = valor.value;
+    const distribuidorV = distribuidor.value;
+    const dataV = data.value;
+    const quantidadeV = quantidade.value;
 
-    consumirProduto(0,idFuncionarioV,quantidadeV,nomeV,valorV,distribuidorV,dataV);
+    consumirProduto(0, idFuncionarioV, quantidadeV, nomeV, valorV, distribuidorV, dataV);
 })
 
