@@ -1,3 +1,4 @@
+const apiUrl = "https://apis3fjava.online/persistence/funcionario";
 function mostrarTabela(id) {
     const tabela = document.getElementById(id);
     tabela.classList.toggle("hidden");
@@ -5,7 +6,6 @@ function mostrarTabela(id) {
 //teste de conexão com o back-end 
 //conexão e consumo da entidade funcionario
 async function conexaoFuncionario() {
-    const apiUrl = "https://apis3fjava.online/persistence/funcionario";
     try {
         const resposta = await fetch(apiUrl, {
             method: "GET", headers: {
@@ -33,7 +33,7 @@ async function carregarTabela(conexao) {
 function consumirFuncionario(dados) {
     const funcionarios = document.getElementById("dadosFuncionarios");
     if (!dados || dados.length === 0) {
-       window.alert("erro....da API ao consumir o funcionario!");
+       funcionarios.innerText="dados dos funcionarios não retornaram";
         return;
     }
     let listaitens = "";
@@ -49,7 +49,7 @@ function consumirFuncionario(dados) {
 }
 function consumirProduto(dados) {
     const produtos = document.getElementById("dadosProdutos");
-    window.alert("erro... da API ao consumir o produto!")
+       funcionarios.innerText="dados dos produtos não retornaram";
     let lista;
     dados.forEach(element=>{
        lista += `<tr>
