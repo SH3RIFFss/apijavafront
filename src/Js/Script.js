@@ -3,6 +3,9 @@ function mostrarTabela(id) {
     const tabela = document.getElementById(id);
     tabela.classList.toggle("hidden");
 }
+const btnDados=document.getElementById("solicitarDadosF").addEventListener("click",()=>{
+    carregarTabela(conexaoFuncionario);
+})
 //teste de conexão com o back-end 
 //conexão e consumo da entidade funcionario
 async function conexaoFuncionario() {
