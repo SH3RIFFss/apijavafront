@@ -15,10 +15,10 @@ async function conexao() {
             throw new Error(`erro na api....${resposta.status}`)
         }
         const dados = await resposta.json();
+        console.log(dados);
     } catch (error) {
         console.log("fodeuuu.... ", error);
     }
-    consumirFuncionario(dados);
 }
 
 function consumirFuncionario(dados) {
