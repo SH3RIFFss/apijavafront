@@ -4,7 +4,8 @@ function mostrarTabela(id) {
     tabela.classList.toggle("hidden");
 }
 const btnDados=document.getElementById("solicitarDadosF").addEventListener("click",()=>{
-    carregarTabela(conexaoFuncionario);
+    conexaoFuncionario();
+    carregarTabela();
 })
 //teste de conexão com o back-end 
 //conexão e consumo da entidade funcionario
@@ -25,9 +26,9 @@ async function conexaoFuncionario() {
 }
 //conexão e consumo da entidade produto
 //chamada para a tranasparencia dos dados recebidos
-async function carregarTabela(conexao) {
+async function carregarTabela() {
     try {
-        const lista = await conexao();
+        const lista = await conexaoFuncionario();
         consumirFuncionario(lista);
     } catch (error) {
         console.log("deu ruinnnnmmmm...");
