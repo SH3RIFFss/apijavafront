@@ -14,20 +14,27 @@ async function conexao() {
         if (!resposta.ok) {
             throw new Error(`erro na api....${resposta.status}`)
         }
-        const dados = await resposta.json();
-        consumirFuncionario(dados);
+        return await resposta.json();
     } catch (error) {
         console.log("fodeuuu.... ", error);
+    }
+}
+async function carregarTabela() {
+    try {
+        const lista=await conexao();
+        consumirFuncionario(lista);
+    } catch (error) {
+        
     }
 }
 
 function consumirFuncionario(dados) {
     const funcionarios = document.getElementById("dadosFuncionarios");
+    const dadoFuncionario = document.createElement("tr");
     if (!dados || dados.length === 0) {
         dadoFuncionario.innerText = "erro....";
         return;
     }
-    const dadoFuncionario = document.createElement("tr");
     dados.forEach(element => {
         dadoFuncionario.innerHTML = `<tr>
         <td>${element.id}</td>
