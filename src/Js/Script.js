@@ -21,13 +21,12 @@ async function conexao() {
 }
 async function carregarTabela() {
     try {
-        let lista=await conexao();
+        const lista=await conexao();
         consumirFuncionario(lista);
     } catch (error) {
-        
+        console.log("deu ruinnnnmmmm...");
     }
 }
-
 function consumirFuncionario(dados) {
     const funcionarios = document.getElementById("dadosFuncionarios");
     const dadoFuncionario = document.createElement("tr");
@@ -36,7 +35,7 @@ function consumirFuncionario(dados) {
         return;
     }
     dados.forEach(element => {
-        dadoFuncionario.innerHTML += `<tr>
+        dadoFuncionario.innerHTML = `<tr>
         <td>${element.id}</td>
         <td>${element.nome}</td>
         <td>${element.cargo}</td>
