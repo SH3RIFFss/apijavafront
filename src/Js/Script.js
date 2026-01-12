@@ -1,10 +1,11 @@
-const apiUrl = "https://apis3fjava.online/persistence/funcionario";
 function mostrarTabela(id) {
     const tabela = document.getElementById(id);
     tabela.classList.toggle("hidden");
 }
 //teste de conexão com o back-end 
-async function conexao() {
+//conexão e consumo da entidade funcionario
+async function conexaoFuncionario() {
+    const apiUrl = "https://apis3fjava.online/persistence/funcionario";
     try {
         const resposta = await fetch(apiUrl, {
             method: "GET", headers: {
@@ -19,9 +20,11 @@ async function conexao() {
         console.log("fodeuuu.... ", error);
     }
 }
-async function carregarTabela() {
+//conexão e consumo da entidade produto
+//chamada para a tranasparencia dos dados recebidos
+async function carregarTabela(conexao) {
     try {
-        const lista=await conexao();
+        const lista = await conexao();
         consumirFuncionario(lista);
     } catch (error) {
         console.log("deu ruinnnnmmmm...");
@@ -29,36 +32,39 @@ async function carregarTabela() {
 }
 function consumirFuncionario(dados) {
     const funcionarios = document.getElementById("dadosFuncionarios");
-    const dadoFuncionario = document.createElement("tr");
     if (!dados || dados.length === 0) {
-        dadoFuncionario.innerText = "erro....";
+       window.alert("erro....da API ao consumir o funcionario!");
         return;
     }
-    let listaitens="";
+    let listaitens = "";
     dados.forEach(element => {
-        listaitens+= `<tr>
+        listaitens += `<tr>
         <td>${element.id}</td>
         <td>${element.nome}</td>
         <td>${element.cargo}</td>
         </tr>`;
-        funcionarios.innerHTML=listaitens;
+        funcionarios.innerHTML = listaitens;
     });
 
 }
-// function consumirProduto(id, idFuncionario, quantidade, nome, valor, distribuidor, data) {
-//     const produtos = document.getElementById("dadosProdutos");
-//     const dadoProduto = document.createElement("tr");
-//     dadoProduto.innerHTML = `<tr>
-//                         <td>${id}</td>
-//                         <td>${idFuncionario}</td>
-//                         <td>${nome}</td>
-//                         <td>${quantidade}</td>
-//                         <td>${valor}</td>
-//                         <td>${distribuidor}</td>
-//                         <td>${data}</td>
-//                     </tr>`;
-//     produtos.appendChild(dadoProduto);
-// }
+function consumirProduto(dados) {
+    const produtos = document.getElementById("dadosProdutos");
+    window.alert("erro... da API ao consumir o produto!")
+    let lista;
+    dados.forEach(element=>{
+       lista += `<tr>
+                <td>${element.id}</td>
+                <td>${element.idFuncionario}</td>
+                <td>${element.nome}</td>
+                <td>${element.quantidade}</td>
+                <td>${element.valor}</td>
+                <td>${element.distribuidor}</td>
+                <td>${element.data}</td>
+            </tr>`;
+    produtos.innerHTML=lista;  
+    })
+   
+}
 // const persistirFuncionario = document.getElementById('btnFormFuncionario').addEventListener("click", (e) => {
 //     e.preventDefault();
 //     const nome = document.getElementById("nomeFuncionario");
