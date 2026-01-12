@@ -15,10 +15,10 @@ async function conexao() {
             throw new Error(`erro na api....${resposta.status}`)
         }
         const dados = await resposta.json();
-        consumirFuncionario(dados);
     } catch (error) {
         console.log("fodeuuu.... ", error);
     }
+    consumirFuncionario(dados);
 }
 
 function consumirFuncionario(dados) {
@@ -27,8 +27,8 @@ function consumirFuncionario(dados) {
         dadoFuncionario.innerText = "erro....";
         return;
     }
-    dados.array.forEach(element => {
-        const dadoFuncionario = document.createElement("tr");
+    const dadoFuncionario = document.createElement("tr");
+    dados.forEach(element => {
         dadoFuncionario.innerHTML = `<tr>
         <td>${element.id}</td>
         <td>${element.nome}</td>
