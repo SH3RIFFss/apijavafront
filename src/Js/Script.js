@@ -1,4 +1,4 @@
-const apiUrl="https://apis3fjava.online/persistence/funcionario";
+const apiUrl = "https://apis3fjava.online/persistence/funcionario/";
 function mostrarTabela(id) {
     const tabela = document.getElementById(id);
     tabela.classList.toggle("hidden");
@@ -6,31 +6,38 @@ function mostrarTabela(id) {
 //teste de conexão com o back-end 
 async function conexao() {
     try {
-        const resposta=await fetch(apiUrl,{
-            method:"GET",headers:{
-                "Content-type":"application/json"
+        const resposta = await fetch(apiUrl, {
+            method: "GET", headers: {
+                "Content-type": "application/json"
             }
         });
-        if(!resposta.ok){
+        if (!resposta.ok) {
             throw new Error(`erro na api....${resposta.status}`)
         }
-        const dados=await resposta.json();
-        console.log("dados recebidos",dados);
+        const dados = await resposta.json();
+        consumirFuncionario(dados);
     } catch (error) {
-        console.log("fodeuuu.... ",error);
+        console.log("fodeuuu.... ", error);
     }
 }
 
-// function consumirFuncionario(id, nome, cargo) {
-//     const funcionarios = document.getElementById("dadosFuncionarios");
-//     const dadoFuncionario = document.createElement("tr");
-//     dadoFuncionario.innerHTML = `<tr>
-//     <td>${id}</td>
-//     <td>${nome}</td>
-//     <td>${cargo}</td>
-//     </tr>`;
-//     funcionarios.appendChild(dadoFuncionario);
-// }
+function consumirFuncionario(dados) {
+    const funcionarios = document.getElementById("dadosFuncionarios");
+    if (!dados || dados.length === 0) {
+        dadoFuncionario.innerText = "erro....";
+        return;
+    }
+    dados.array.forEach(element => {
+        const dadoFuncionario = document.createElement("tr");
+        dadoFuncionario.innerHTML = `<tr>
+        <td>${element.id}</td>
+        <td>${element.nome}</td>
+        <td>${element.cargo}</td>
+        </tr>`;
+        funcionarios.appendChild(dadoFuncionario);
+    });
+
+}
 // function consumirProduto(id, idFuncionario, quantidade, nome, valor, distribuidor, data) {
 //     const produtos = document.getElementById("dadosProdutos");
 //     const dadoProduto = document.createElement("tr");
