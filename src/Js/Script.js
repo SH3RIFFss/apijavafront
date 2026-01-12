@@ -21,7 +21,7 @@ async function conexao() {
 }
 async function carregarTabela() {
     try {
-        const lista=await conexao();
+        let lista=await conexao();
         consumirFuncionario(lista);
     } catch (error) {
         
@@ -36,7 +36,7 @@ function consumirFuncionario(dados) {
         return;
     }
     dados.forEach(element => {
-        dadoFuncionario.innerHTML = `<tr>
+        dadoFuncionario.innerHTML += `<tr>
         <td>${element.id}</td>
         <td>${element.nome}</td>
         <td>${element.cargo}</td>
