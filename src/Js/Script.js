@@ -33,7 +33,7 @@ async function carregarTabela(conexao) {
 function consumirFuncionario(dados) {
     const funcionarios = document.getElementById("dadosFuncionarios");
     if (!dados || dados.length === 0) {
-       funcionarios.innerText="dados dos funcionarios não retornaram";
+        funcionarios.innerText = "dados dos funcionarios não retornaram";
         return;
     }
     let listaitens = "";
@@ -49,10 +49,13 @@ function consumirFuncionario(dados) {
 }
 function consumirProduto(dados) {
     const produtos = document.getElementById("dadosProdutos");
-       funcionarios.innerText="dados dos produtos não retornaram";
+    if (!dados || dados.length === 0) {
+        produtos.innerText = "dados dos produtos não retornaram";
+        return;
+    }
     let lista;
-    dados.forEach(element=>{
-       lista += `<tr>
+    dados.forEach(element => {
+        lista += `<tr>
                 <td>${element.id}</td>
                 <td>${element.idFuncionario}</td>
                 <td>${element.nome}</td>
@@ -61,9 +64,9 @@ function consumirProduto(dados) {
                 <td>${element.distribuidor}</td>
                 <td>${element.data}</td>
             </tr>`;
-    produtos.innerHTML=lista;  
+        produtos.innerHTML = lista;
     })
-   
+
 }
 // const persistirFuncionario = document.getElementById('btnFormFuncionario').addEventListener("click", (e) => {
 //     e.preventDefault();
