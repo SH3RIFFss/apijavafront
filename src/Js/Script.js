@@ -1,4 +1,4 @@
-const apiUrl = "https://apis3fjava.online/persistence/funcionario/";
+const apiUrl = "https://apis3fjava.online/persistence/funcionario";
 function mostrarTabela(id) {
     const tabela = document.getElementById(id);
     tabela.classList.toggle("hidden");
@@ -15,7 +15,7 @@ async function conexao() {
             throw new Error(`erro na api....${resposta.status}`)
         }
         const dados = await resposta.json();
-        console.log(dados);
+        consumirFuncionario(dados);
     } catch (error) {
         console.log("fodeuuu.... ", error);
     }
