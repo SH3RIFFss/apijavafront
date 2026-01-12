@@ -34,13 +34,14 @@ function consumirFuncionario(dados) {
         dadoFuncionario.innerText = "erro....";
         return;
     }
+    let listaitens="";
     dados.forEach(element => {
-        dadoFuncionario.innerHTML = `<tr>
+        listaitens+= `<tr>
         <td>${element.id}</td>
         <td>${element.nome}</td>
         <td>${element.cargo}</td>
         </tr>`;
-        funcionarios.appendChild(dadoFuncionario);
+        funcionarios.innerHTML=listaitens;
     });
 
 }
